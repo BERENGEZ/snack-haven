@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Menu - Snack Haven</title>
+        <link rel="stylesheet" href="style.css">
+    </head>  
+   <title>Shopping Cart</title>
+    </head>
+    <body>
+    <header>
+        <h1>Your Cart</h1>
+        <nav>
+        <a href="index.html">Home</a>
+        <a href="menu.html">Menu</a>
+        </nav>
+    </header>   
+
+    <section class="cart-wrapper">
+      <!-- Cart -->
+      <div class="cart-section">
+        <h2>Your Cart</h2>
+        <div id="cart-items"></div>
+        <p>Total: <strong>$<span id="cart-total">0.00</span></strong></p>
+        <button class="clear-cart-btn" onclick="clearCart()">🗑️ Clear Cart</button>
+      </div>
+    
+      <!-- Checkout -->
+      <div class="checkout-section">
+
+        <h2>Checkout</h2>
+
+        <form id="checkout-form">
+          <input type="text" placeholder="Full Name" required />
+          <input type="email" placeholder="Email Address" required />
+          <input type="text" placeholder="Shipping Address" required />
+
+          <select id="payment-method" required>
+            <option value="" disabled selected>Select Payment Method</option>
+            <option value="credit-card">💳 Credit Card</option>
+            <option value="mobile-money">📱 Mobile Money</option>
+            <option value="pay-pal">🅿️ PayPal</option>
+            <option value="cash-on-delivery">💵 Cash On Delivery</option>
+          </select>
+
+          <button type="submit">&#9989; Place order</button>
+
+        </form>
+        <div id="checkout-response"></div>
+      </div>
+
+     
+
+     
+
+    </section>
+    
+    
+
+    
+
+    <footer>
+        <p>&copy; 2025 Snack Haven. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu - Snack Haven</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="menu-page">
+
+    <header>
+        <h1>Our Menu</h1>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="contact.html">Contact</a>
+            <a href="cart.html">Cart</a>
+        </nav>
+    </header>
+
+    <main class="menu-container">
+        <!-- Snack Cards -->
+        <section class="menu-grid">
+
+            <div class="menu-card">
+                <img src="images/Samosa_1.jpg" alt="Samosa">
+                <h2>Samosas</h2>
+                <p>Crispy triangles filled with spiced goodness!</p>
+                <p class="price">$2.50</p>
+                <button onclick="addToCart('Samosa', 2.50, 'images/Samosa_1.jpg')">Add to Cart</button>         
+            </div>
+
+            <div class="menu-card">
+                <img src="images/mandazi.jpg" alt="Maandazi">
+                <h2>Maandazi</h2>
+                <p>Soft and tender triangular fried bread with cardamon.</p>
+                <p class="price">$1.50</p>
+                <button onclick="addToCart('Maandazi', 1.50, 'images/mandazi.jpg')">Add to Cart</button>         
+            </div>
+
+            <div class="menu-card">
+                <img src="images/bajia.jpg" alt="Bajia">
+                <h2>Bajia</h2>
+                <p>Spiced potato fritters, Crispy and Golden!</p>
+                <p class="price">$2.50</p>
+                <button onclick="addToCart('Bajia', 2.50, 'images/bajia.jpg')">Add to Cart</button>            
+            </div>
+
+            <div class="menu-card">
+                <img src="images/ViaziKarai.jpg" alt="Viazi Karai">
+                <h2>Viazi Karai</h2>
+                <p>Fried potatoes coated with food colour and baking flour.</p>
+                <p class="price">$2.50</p>
+                <button onclick="addToCart('Viazi Karai', 2.50, 'images/ViaziKarai.jpg')">Add to Cart</button>         
+            </div>
+
+            <div class="menu-card">
+                <img src="images/spicy_Tea.jpg" alt="Spicy Tea">
+                <h2>Spicy Cinnamon Tea</h2>
+                <p>Tea rich in spicy ingredients from the farm!</p>
+                <p class="price">$3.00</p>
+                <button onclick="addToCart('Spicy Cinnamon Tea', 3.00, 'images/spicy_Tea.jpg')">Add to Cart</button>
+            </div>
+
+            <div class="menu-card">
+                <img src="images/image_Tamarind.jpg" alt="Tamarind Juice">
+                <h2>Tamarind Juice</h2>
+                <p>Juice rich in Tamarind!</p>
+                <p class="price">$4.00</p>
+                <button onclick="addToCart('Tamarind Juice', 3.00, 'images/image_Tamarind.jpg')">Add to Cart</button>
+            </div>
+
+            <!-- Add more cards here as needed -->
+
+        </section>
+
+    
+
+        <!--  Cart Summary
+        <section class="cart">
+            <h2>🛒 Your Cart</h2>
+            <ul id="cart-items"></ul>
+            <p id="cart-total">Total: $0.00</p>           
+            
+             
+            
+        </section> -->
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
