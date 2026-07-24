@@ -1,36 +1,38 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Menu - Snack Haven</title>
-        <link rel="stylesheet" href="style.css">
-    </head>  
-   <title>Shopping Cart</title>
-    </head>
-    <body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shopping Cart - Snack Haven</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
     <header>
-        <h1>Your Cart</h1>
-        <nav>
+      <h1>Your Shopping Cart</h1>
+      <nav>
         <a href="index.html">Home</a>
         <a href="menu.html">Menu</a>
-        </nav>
-    </header>   
+        <a href="cart.html">Cart</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </header>
 
-    <section class="cart-wrapper">
-      <!-- Cart -->
+    <main class="cart-wrapper">
+      <!-- Cart Items Panel -->
       <div class="cart-section">
-        <h2>Your Cart</h2>
+        <h2>Your Selected Items</h2>
         <div id="cart-items"></div>
-        <p>Total: <strong>$<span id="cart-total">0.00</span></strong></p>
-        <button class="clear-cart-btn" onclick="clearCart()">🗑️ Clear Cart</button>
+        <p style="font-size: 1.2rem; margin-top: 15px">
+          Total: <strong>$<span id="cart-total">0.00</span></strong>
+        </p>
+        <button class="clear-cart-btn" onclick="clearCart()">
+          🗑️ Clear Cart
+        </button>
       </div>
-    
-      <!-- Checkout -->
+
+      <!-- Checkout Form Panel -->
       <div class="checkout-section">
-
         <h2>Checkout</h2>
-
         <form id="checkout-form">
           <input type="text" placeholder="Full Name" required />
           <input type="email" placeholder="Email Address" required />
@@ -39,31 +41,21 @@
           <select id="payment-method" required>
             <option value="" disabled selected>Select Payment Method</option>
             <option value="credit-card">💳 Credit Card</option>
-            <option value="mobile-money">📱 Mobile Money</option>
+            <option value="mobile-money">📱 Mobile Money (M-Pesa)</option>
             <option value="pay-pal">🅿️ PayPal</option>
             <option value="cash-on-delivery">💵 Cash On Delivery</option>
           </select>
 
-          <button type="submit">&#9989; Place order</button>
-
+          <button type="submit">✅ Place Order</button>
         </form>
         <div id="checkout-response"></div>
       </div>
-
-     
-
-     
-
-    </section>
-    
-    
-
-    
+    </main>
 
     <footer>
-        <p>&copy; 2025 Snack Haven. All rights reserved.</p>
+      <p>&copy; 2026 Snack Haven. All rights reserved.</p>
     </footer>
 
     <script src="script.js"></script>
-</body>
+  </body>
 </html>

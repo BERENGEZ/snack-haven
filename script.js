@@ -141,21 +141,23 @@ document.addEventListener("DOMContentLoaded", () => {
     loadCart(); // Initial load
   });
   
-  // Checkout form submission
-  document.addEventListener("DOMContentLoaded", () => {
+ // Checkout form submission
+document.addEventListener("DOMContentLoaded", () => {
     const form = document.getElementById("checkout-form");
-    const responseDiv = document.getElementById("checkout-response");
-  
-    form.addEventListener("submit", function (e) {
-      e.preventDefault();
-      responseDiv.textContent = "✅ Thank you for your order! We'll contact you soon.";
-  
-      form.reset();
-      localStorage.removeItem("cart");
-  
-      document.getElementById("cart-items").innerHTML = "<p>Your cart is now empty.</p>";
-      document.getElementById("cart-total").textContent = "0.00";
-    });
-  });
+    if (form) { // Only run if checkout-form exists on the current page
+        const responseDiv = document.getElementById("checkout-response");
+     
+        form.addEventListener("submit", function (e) {
+            e.preventDefault();
+            responseDiv.textContent = "✅ Thank you for your order! We'll contact you soon.";
+         
+            form.reset();
+            localStorage.removeItem("cart");
+         
+            document.getElementById("cart-items").innerHTML = "<p>Your cart is now empty.</p>";
+            document.getElementById("cart-total").textContent = "0.00";
+        });
+    }
+});
 
 
