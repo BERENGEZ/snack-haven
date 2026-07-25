@@ -157,12 +157,12 @@ document.addEventListener("DOMContentLoaded", () => {
       const total = document.getElementById("cart-total").textContent;
 
       const orderData = {
-        name: form.elements[0].value,
-        email: form.elements[1].value,
-        address: form.elements[2].value,
+        customer_name: form.elements[0].value,
+        customer_email: form.elements[1].value,
+        customer_address: form.elements[2].value,
         payment_method: document.getElementById("payment-method").value,
-        cart: cart,
-        total: total,
+        cart_items: cart,
+        total_amount: total,
       };
 
       // 2. Show a loading message

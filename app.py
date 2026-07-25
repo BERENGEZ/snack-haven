@@ -16,7 +16,7 @@ def checkout():
     print(f"Customer Address: {order_data.get('customer_address')}")
     print(f"Payment Method: {order_data.get('payment_method')}")
     print(f"Cart Items: {order_data.get('cart_items')}")
-    print(f"Total Amount: {order_data.get('total_amount')}")
+    print(f"Total Amount: {order_data.get('total_amount')})")
 
     #Send the response back to frontend javascript
     return jsonify({
