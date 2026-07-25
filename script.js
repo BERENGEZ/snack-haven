@@ -152,14 +152,14 @@ document.addEventListener("DOMContentLoaded", () => {
     form.addEventListener("submit", async function (e) {
       e.preventDefault();
 
-      // 1. Gather all the data from the form and cart
+      // Gather all the data using exact HTML IDs
       const cart = JSON.parse(localStorage.getItem("cart")) || [];
       const total = document.getElementById("cart-total").textContent;
 
       const orderData = {
-        customer_name: form.elements[0].value,
-        customer_email: form.elements[1].value,
-        customer_address: form.elements[2].value,
+        customer_name: document.getElementById("name").value,
+        customer_email: document.getElementById("email").value,
+        customer_address: document.getElementById("address").value,
         payment_method: document.getElementById("payment-method").value,
         cart_items: cart,
         total_amount: total,
