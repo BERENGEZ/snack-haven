@@ -34,9 +34,14 @@
       <div class="checkout-section">
         <h2>Checkout</h2>
         <form id="checkout-form">
-          <input type="text" placeholder="Full Name" required />
-          <input type="email" placeholder="Email Address" required />
-          <input type="text" placeholder="Shipping Address" required />
+          <input type="text" placeholder="Full Name" required id="name" />
+          <input type="email" placeholder="Email Address" required id="email" />
+          <input
+            type="text"
+            placeholder="Shipping Address"
+            required
+            id="address"
+          />
 
           <select id="payment-method" required>
             <option value="" disabled selected>Select Payment Method</option>
