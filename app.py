@@ -24,6 +24,19 @@ def checkout():
         "message": "Order received successfully!"
     }), 200
 
+@app.route('/api/contactUs', methods=['POST'])
+def contact_us():
+    contact_data = request.get_json()
+    # Process the contact form data
+    print(f"Name: {contact_data.get('name')}")
+    print(f"Email: {contact_data.get('email')}")
+    print(f"Message: {contact_data.get('message')}")
+
+    return jsonify({
+        "status": "success",
+        "message": "Message received successfully!"
+    }), 200
+
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port=5001)
 #Run the app on port 5001

@@ -143,7 +143,53 @@ document.addEventListener("DOMContentLoaded", () => {
   loadCart(); // Initial load
 });
 
-// Checkout form submission with Flask Backend)
+//Contact US Submission with Flask Backend
+document.addEventListener("DOMContentLoaded", () => {
+  const contactForm = document.getElementById("contactForm");
+  if (contactForm) {
+    const responseDiv = document.getElementById("contact-response");
+
+    contactForm.addEventListener("submit", async function (e) {
+      e.preventDefault();
+
+      const contactData = {
+        name: document.getElementById("name").value,
+        email: document.getElementById("email").value,
+        message: document.getElementById("message").value,
+      };
+
+      responseDiv.textContent = "⏳ Sending message...";
+      responseDiv.style.color = "var(--ocean-navy)";
+
+      try {
+        const response = await fetch("/api/contactUs", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(contactData),
+        });
+
+        const result = await response.json();
+
+        if (response.ok) {
+          responseDiv.textContent = "✅ " + result.message;
+          responseDiv.style.color = "green";
+          contactForm.reset();
+        } else {
+          responseDiv.textContent = "❌ Error sending message.";
+          responseDiv.style.color = "red";
+        }
+      } catch (error) {
+        console.error("Backend Error:", error);
+        responseDiv.textContent = "❌ Could not connect to the server.";
+        responseDiv.style.color = "red";
+      }
+    });
+  }
+});
+
+// Checkout form submission with Flask Backend
 document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("checkout-form");
   if (form) {
