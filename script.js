@@ -16,18 +16,6 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 // Contact Form Submission
-const form = document.getElementById("contactForm");
-if (form) {
-  // Only run if contactForm exists
-  const responseMessage = document.getElementById("contact-response");
-
-  form.addEventListener("submit", function (event) {
-    event.preventDefault();
-    responseMessage.textContent =
-      "Thank you for contacting us! We'll get back to you soon.";
-    responseMessage.style.color = "green";
-  });
-}
 
 function showDetails(name, description) {
   const modal = document.getElementById("snackModal");
