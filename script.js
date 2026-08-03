@@ -157,7 +157,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const nameInput = document.getElementById("name").value.trim();
       const emailInput = document.getElementById("email").value.trim();
       const messageInput = document.getElementById("message").value.trim();
-      const submitBtn = document.getElementById("button[type=submit]");
+      const submitBtn = contactForm.querySelector("button[type=submit]");
 
       if (!emailInput.includes("@")) {
         showToast("❌ Please enter a valid email address.");
