@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 // Dynamic Greeting for Homepage
 document.addEventListener("DOMContentLoaded", function () {
   const greeting = document.getElementById("greeting");
@@ -55,6 +54,23 @@ function nextSlide() {
 setInterval(nextSlide, 3000); // Change every 3 seconds
 showSlide(currentIndex);
 
+//Show Toast is a function that when a User adds an item in the cart a message pops aout and it fades after 3 seconds.
+function showToast(message) {
+  let toast = document.getElementById("toast");
+  if (!toast) {
+    toast = document.createElement("div");
+    toast.id = "toast";
+    document.body.appendChild(toast);
+  }
+
+  toast.textContent = message;
+  toast.classList.add("show");
+
+  //Let it fade After 3 Seconds
+  setTimeout(() => {
+    toast.classList.remove("show");
+  }, 3000);
+}
 // MENU PAGE SCRIPT
 
 function addToCart(name, price, image) {
@@ -69,7 +85,7 @@ function addToCart(name, price, image) {
   }
 
   localStorage.setItem("cart", JSON.stringify(cart));
-  alert(`${name} added to cart.`);
+  showToast(`${name} added to your cart!`);
 }
 
 // CART PAGE SCRIPT
@@ -135,19 +151,34 @@ document.addEventListener("DOMContentLoaded", () => {
 document.addEventListener("DOMContentLoaded", () => {
   const contactForm = document.getElementById("contactForm");
   if (contactForm) {
-    const responseDiv = document.getElementById("contact-response");
-
     contactForm.addEventListener("submit", async function (e) {
       e.preventDefault();
 
-      const contactData = {
-        name: document.getElementById("name").value,
-        email: document.getElementById("email").value,
-        message: document.getElementById("message").value,
-      };
+      const nameInput = document.getElementById("name").value.trim();
+      const emailInput = document.getElementById("email").value.trim();
+      const messageInput = document.getElementById("message").value.trim();
+      const submitBtn = document.getElementById("button[type=submit]");
 
-      responseDiv.textContent = "⏳ Sending message...";
-      responseDiv.style.color = "var(--ocean-navy)";
+      if (!emailInput.includes("@")) {
+        showToast("❌ Please enter a valid email address.");
+        return; //Stops the function from hitting the serever
+      }
+
+      if (messageInput.length < 20) {
+        showToast("❌ Message must be at least 20 characters long.");
+        return;
+      }
+
+      submitBtn.disabled = true; // Disable the button to prevent multiple submissions
+      submitBtn.textContent = "Sending...";
+      submitBtn.style.cursor = "not-allowed"; // Change cursor to indicate disabled state
+      submitBtn.style.opacity = "0.7"; // Reduce opacity to indicate disabled state
+
+      const contactData = {
+        name: nameInput,
+        email: emailInput,
+        message: messageInput,
+      };
 
       try {
         const response = await fetch("/api/contactUs", {
@@ -161,17 +192,19 @@ document.addEventListener("DOMContentLoaded", () => {
         const result = await response.json();
 
         if (response.ok) {
-          responseDiv.textContent = "✅ " + result.message;
-          responseDiv.style.color = "green";
+          showToast("✅ " + result.message);
           contactForm.reset();
         } else {
-          responseDiv.textContent = "❌ Error sending message.";
-          responseDiv.style.color = "red";
+          showToast("❌ Error sending message.");
         }
       } catch (error) {
         console.error("Backend Error:", error);
-        responseDiv.textContent = "❌ Could not connect to the server.";
-        responseDiv.style.color = "red";
+        showToast("❌ Could not connect to the server.");
+      } finally {
+        submitBtn.disabled = false; // Re-enable the button after submission
+        submitBtn.textContent = "Send Message"; // Reset button text
+        submitBtn.style.cursor = "pointer"; // Reset cursor style
+        submitBtn.style.opacity = "1"; // Reset opacity
       }
     });
   }
@@ -200,8 +233,7 @@ document.addEventListener("DOMContentLoaded", () => {
       };
 
       // 2. Show a loading message
-      responseDiv.textContent = "⏳ Securely processing order...";
-      responseDiv.style.color = "var(--ocean-navy)";
+      showToast("⏳ Securely processing order...");
 
       try {
         // 3. Send the data to your Python Flask Backend
@@ -217,8 +249,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // 4. Handle the successful response from Python
         if (response.ok) {
-          responseDiv.textContent = "✅ " + result.message;
-          responseDiv.style.color = "green";
+          showToast("✅ " + result.message);
 
           form.reset();
           localStorage.removeItem("cart");
@@ -226,13 +257,11 @@ document.addEventListener("DOMContentLoaded", () => {
             "<p>Your cart is now empty.</p>";
           document.getElementById("cart-total").textContent = "0.00";
         } else {
-          responseDiv.textContent = "❌ Error processing order.";
-          responseDiv.style.color = "red";
+          showToast("❌ Error processing order.");
         }
       } catch (error) {
         console.error("Backend Error:", error);
-        responseDiv.textContent = "❌ Could not connect to the server.";
-        responseDiv.style.color = "red";
+        showToast("❌ Could not connect to the server.");
       }
     });
   }
